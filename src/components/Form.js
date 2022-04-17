@@ -1,42 +1,31 @@
 import React from 'react';
 import '../css/Form.css';
 import { Link } from 'react-router-dom';
-import {useState,useEffect} from 'react';
+import {useState} from 'react';
 import blacklogo from '../assets/black.png';
 
 function Form() {
- 
-   
-    // const hi=()=>{
-    //     window.location.reload(false);
-       
-    // }
-       
+
     const [submit,setsubmit]=useState("");
 
   return(
       <>
          
        <div className="container">
-         
         <div className="screen">
-       
             <div className="screen__content">
             <div>
-                <img src={blacklogo} alt="Image" height="100" width="120"/>
+                <img src={blacklogo} alt="Logo" height="100" width="120"/>
             </div>
             <h1 className="heading">
               Registration
-              </h1>
+            </h1>
                 <form className="login">
                     <div className="login__field">
-                       
                         <input type="email" className="login__input" placeholder="Enter Email" onChange={(event)=>{setsubmit(event.target.value)}}/>
                     </div>
-                   
-                    <Link to="/form1"><button className="login__submit button1">
+                    <Link className="link" to="/form1"><button className="login__submit button1">
                         Generate OTP
-                       
                     </button>
                     </Link>
                 </form>
@@ -49,9 +38,8 @@ function Form() {
             </div>
         </div>
     </div>
-      </>
+    </>
   );
- 
 }
 
 export default Form;
