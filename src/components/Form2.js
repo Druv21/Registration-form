@@ -14,10 +14,13 @@ const Form2 = () => {
           <form className="login form2">
             <div className="scroll">
              <div className="login__field">          
-                <input type="text" className="login__input" placeholder="Enter Team Leader Name" required />
+                <input type="text" className="login__input" placeholder="Enter Team Leader Name" required/>
+             </div>
+             <div className="login__field">
+                <input type="email" className="login__input" placeholder="Enter Email" required/>
              </div>
              <div className="login__field">      
-                <input type="text" className="login__input" placeholder="Enter Student Number" maxLength="7" required />
+                <input type="text" className="login__input" placeholder="Enter Student Number" maxLength="7" required/>
              </div>
              <div className="login__field">          
                 <input type="text" className="login__input" placeholder="Enter Mobile Number" maxLength="10" required/>

@@ -8,8 +8,8 @@ function App() {
     <>
       <BrowserRouter>
        <Switch>
-         <Route path='/' exact component={Form} />
-         <Route path='/form2' exact component={Form2} />
+         <Route path='/' exact component={Form}/>
+         <Route path='/form2' exact component={Form2}/>
        </Switch>
      </BrowserRouter>
     </>

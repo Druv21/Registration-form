@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import '../css/Form.css';
-import { Link } from 'react-router-dom';
 import {useState} from 'react';
 import blacklogo from '../assets/black.png';
 
 function Form() {
 
+       const history=useHistory();
        const [show, setShow] = useState(false);
        const [email,setemail]=useState("");
        const showdiv = (e)=>{
@@ -15,6 +16,11 @@ function Form() {
 
        const getdata=(event)=>{
            setemail(event.target.value);
+       }
+
+       const url=()=>{
+           history.push("/form2");
+           history.go();
        }
 
        useEffect(()=>{
@@ -63,11 +69,9 @@ function Form() {
                   <input type="text" className="OTP" maxLength="1" required/>
                   <input type="text" className="OTP" maxLength="1" required/>
                 </div>
-                 <Link className="link" to="/form2">
-                  <button className="login__submit button2">
+                  <button className="login__submit button2" onClick={url}>
                     <span className="button__text">Verify OTP</span>
                   </button>
-                 </Link>
                  <button className="login__submit button2 button4">
                     <span className="button__text">Resend OTP</span>
                  </button>
