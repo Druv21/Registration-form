@@ -1,6 +1,5 @@
 import React from 'react';
 import '../css/Form.css';
-import { Link } from 'react-router-dom';
 import blacklogo from '../assets/black.png';
 
 const Form2 = () => {
@@ -15,41 +14,39 @@ const Form2 = () => {
           <form className="login form2">
             <div className="scroll">
              <div className="login__field">          
-                <input type="text" className="login__input" placeholder="Enter Team Leader Name"/>
+                <input type="text" className="login__input" placeholder="Enter Team Leader Name" required />
              </div>
              <div className="login__field">      
-                <input type="text" className="login__input" placeholder="Enter Student Number" maxLength="7"/>
+                <input type="text" className="login__input" placeholder="Enter Student Number" maxLength="7" required />
              </div>
              <div className="login__field">          
-                <input type="text" className="login__input" placeholder="Enter Mobile Number" maxLength="10"/>
+                <input type="text" className="login__input" placeholder="Enter Mobile Number" maxLength="10" required/>
              </div>
              <div className="login__field">
-                <input type="text" className="login__input" placeholder="Enter Section"/>
+                <input type="text" className="login__input" placeholder="Enter Section" required/>
              </div>
              <div className="login__field form3">
-                        <input type="text" className="login__input" placeholder="Enter Member 1 Name"/>
-                    </div>
-                    <div className="login__field form3">
-                        <input type="text" className="login__input" placeholder="Enter Student Number" maxLength="7"/>
-                    </div>
-                    <div className="login__field form3">
-                        <input type="text" className="login__input" placeholder="Enter Member 2 Name"/>
-                    </div>
-                    <div className="login__field form3">
-                        <input type="text" className="login__input" placeholder="Enter Student Number" maxLength="7"/>
-                    </div>
-                    <div className="login__field form3">
-                        <input type="text" className="login__input" placeholder="Enter Member 3 Name"/>
-                    </div>
-                    <div className="login__field form3">
-                        <input type="text" className="login__input" placeholder="Enter Student Number" maxLength="7"/>
-                    </div>
-                    </div>
-             <Link className="link" to="/form3">
-                <button className="login__submit">
+                <input type="text" className="login__input" placeholder="Enter Member 1 Name" required/>
+             </div>
+             <div className="login__field form3">
+                <input type="text" className="login__input" placeholder="Enter Student Number" maxLength="7" required/>
+             </div>
+             <div className="login__field form3">
+                <input type="text" className="login__input" placeholder="Enter Member 2 Name" required/>
+             </div>
+             <div className="login__field form3">
+                <input type="text" className="login__input" placeholder="Enter Student Number" maxLength="7" required/>
+             </div>
+             <div className="login__field form3">
+                <input type="text" className="login__input" placeholder="Enter Member 3 Name" required/>
+             </div>
+             <div className="login__field form3">
+                <input type="text" className="login__input" placeholder="Enter Student Number" maxLength="7" required/>
+             </div>
+            </div>
+            <button className="login__submit">
                 <span className="button__text button3">Submit</span>       
-                </button>
-             </Link>
+            </button>
           </form>      
         </div>
         <div className="screen__background">
