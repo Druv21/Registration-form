@@ -12,7 +12,8 @@ const Form2 = () => {
           <div>
             <img src={blacklogo} alt="Logo" height="100" width="120"/>
           </div>
-          <form className="login">
+          <form className="login form2">
+            <div className="scroll">
              <div className="login__field">          
                 <input type="text" className="login__input" placeholder="Enter Team Leader Name"/>
              </div>
@@ -25,9 +26,28 @@ const Form2 = () => {
              <div className="login__field">
                 <input type="text" className="login__input" placeholder="Enter Section"/>
              </div>
+             <div className="login__field form3">
+                        <input type="text" className="login__input" placeholder="Enter Member 1 Name"/>
+                    </div>
+                    <div className="login__field form3">
+                        <input type="text" className="login__input" placeholder="Enter Student Number" maxLength="7"/>
+                    </div>
+                    <div className="login__field form3">
+                        <input type="text" className="login__input" placeholder="Enter Member 2 Name"/>
+                    </div>
+                    <div className="login__field form3">
+                        <input type="text" className="login__input" placeholder="Enter Student Number" maxLength="7"/>
+                    </div>
+                    <div className="login__field form3">
+                        <input type="text" className="login__input" placeholder="Enter Member 3 Name"/>
+                    </div>
+                    <div className="login__field form3">
+                        <input type="text" className="login__input" placeholder="Enter Student Number" maxLength="7"/>
+                    </div>
+                    </div>
              <Link className="link" to="/form3">
                 <button className="login__submit">
-                <span className="button__text button3">Next</span>       
+                <span className="button__text button3">Submit</span>       
                 </button>
              </Link>
           </form>      
