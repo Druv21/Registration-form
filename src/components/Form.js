@@ -6,6 +6,9 @@ import blacklogo from '../assets/black.png';
 
 function Form() {
 
+    var otp="";
+    var count=0;
+
        const history=useHistory();
        const [show, setShow] = useState(false);
        const [email,setemail]=useState("");
@@ -21,6 +24,15 @@ function Form() {
        const url=()=>{
            history.push("/form2");
            history.go();
+       }
+
+       const store_otp=(event)=>{
+           otp=otp.concat(event.target.value);
+           count=count+1;
+           if(count===4){
+            //    console.log(otp);
+               url();
+           }
        }
 
        useEffect(()=>{
@@ -64,14 +76,14 @@ function Form() {
                   Enter OTP
                 </h1>
                 <div className="otpbox">
-                  <input type="text" className="OTP" maxLength="1" required/>
-                  <input type="text" className="OTP" maxLength="1" required/>
-                  <input type="text" className="OTP" maxLength="1" required/>
-                  <input type="text" className="OTP" maxLength="1" required/>
+                  <input type="text" className="OTP" maxLength="1" required onChange={store_otp}/>
+                  <input type="text" className="OTP" maxLength="1" required onChange={store_otp}/>
+                  <input type="text" className="OTP" maxLength="1" required onChange={store_otp}/>
+                  <input type="text" className="OTP" maxLength="1" required onChange={store_otp}/>
                 </div>
-                  <button className="login__submit button2" onClick={url}>
+                  {/* <button className="login__submit button2" onClick={url}>
                     <span className="button__text">Verify OTP</span>
-                  </button>
+                  </button> */}
                  <button className="login__submit button2 button4">
                     <span className="button__text">Resend OTP</span>
                  </button>
