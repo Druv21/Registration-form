@@ -31,7 +31,6 @@ function Form() {
            otp=otp.concat(event.target.value);
            count=count+1;
            if(count===4){
-            //    console.log(otp);
                url();
            }
            const {maxLength, value, name}=event.target;
@@ -65,7 +64,7 @@ function Form() {
             </h1>
                 <form className="login">
                     <div className="login__field">
-                        <input type="email" className="login__input" placeholder="Enter Email" onChange={getdata}/>
+                        <input pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" type="email" className="login__input" placeholder="Enter Email" onChange={getdata}/>
                     </div>
                     <button className="login__submit button1" onClick={showdiv}>
                          Generate OTP
