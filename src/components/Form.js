@@ -7,6 +7,7 @@ import blacklogo from '../assets/black.png';
 function Form() {
 
     var otp="";
+    var nextfield="";
     var count=0;
 
        const history=useHistory();
@@ -32,6 +33,18 @@ function Form() {
            if(count===4){
             //    console.log(otp);
                url();
+           }
+           const {maxLength, value, name}=event.target;
+           const [fieldName,fieldIndex]=name.split("-");
+
+           let fieldIntIndex=parseInt(fieldIndex,10);
+           if(value.length>=maxLength){
+             if(fieldIntIndex<4){
+               nextfield=document.querySelector(`input[name=field-${fieldIntIndex+1}]`);
+             }
+             if(nextfield!==null){
+               nextfield.focus();
+             }
            }
        }
 
@@ -76,10 +89,10 @@ function Form() {
                   Enter OTP
                 </h1>
                 <div className="otpbox">
-                  <input type="text" className="OTP" maxLength="1" required onChange={store_otp}/>
-                  <input type="text" className="OTP" maxLength="1" required onChange={store_otp}/>
-                  <input type="text" className="OTP" maxLength="1" required onChange={store_otp}/>
-                  <input type="text" className="OTP" maxLength="1" required onChange={store_otp}/>
+                  <input name="field-1" length="1" type="text" className="OTP" maxLength="1" required onChange={store_otp}/>
+                  <input name="field-2" length="1" type="text" className="OTP" maxLength="1" required onChange={store_otp}/>
+                  <input name="field-3" length="1" type="text" className="OTP" maxLength="1" required onChange={store_otp}/>
+                  <input name="field-4" length="1" type="text" className="OTP" maxLength="1" required onChange={store_otp}/>
                 </div>
                   {/* <button className="login__submit button2" onClick={url}>
                     <span className="button__text">Verify OTP</span>
