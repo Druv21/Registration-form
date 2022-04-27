@@ -1,6 +1,6 @@
 import './App.css';
-import Form from './components/Form';
-import Form2 from './components/Form2';
+import Otp_validation from './components/Otp_validation';
+import Form_details from './components/Form_details';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 function App() {
@@ -8,8 +8,8 @@ function App() {
     <>
       <BrowserRouter>
        <Switch>
-         <Route path='/' exact component={Form}/>
-         <Route path='/form2' exact component={Form2}/>
+         <Route path='/' exact component={Otp_validation}/>
+         <Route path='/form2' exact component={Form_details}/>
        </Switch>
      </BrowserRouter>
     </>

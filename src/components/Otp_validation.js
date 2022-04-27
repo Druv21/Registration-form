@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import '../css/Form.css';
+import '../css/form.css';
 import {useState} from 'react';
 import blacklogo from '../assets/black.png';
 

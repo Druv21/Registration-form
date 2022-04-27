@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/Form.css';
+import '../css/form.css';
 import blacklogo from '../assets/black.png';
 
 const Form2 = () => {
