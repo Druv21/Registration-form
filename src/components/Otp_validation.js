@@ -17,7 +17,7 @@ function Form() {
        const [email,setemail]=useState("");
 
        const postapi=async()=>{
-        axios.post("https://event0form.herokuapp.com/sendOTP",JSON.stringify(email))
+        axios.post("https://eventformconatus.herokuapp.com/sendotp",{"email":email})
         .then(function (response) {
           console.log(response);
           setShow(true);
@@ -25,14 +25,11 @@ function Form() {
         .catch(function (error) {
           console.log(error);
         });
-        //const resdata=await fetchApi();
-        //console.log(resdata);
       }
 
        const showdiv = (e)=>{
             e.preventDefault();
             postapi();
-            //setShow(true);
        };
 
        const getdata=(event)=>{
