@@ -20,7 +20,7 @@ const Form2 = () => {
                 <input type="email" className="login__input" placeholder="Enter Email" required/>
              </div>
              <div className="login__field">      
-                <input type="text" className="login__input" placeholder="Enter Student Number" maxLength="7" required/>
+                <input type="text" className="login__input" placeholder="Enter Student Number" required/>
              </div>
              <div className="login__field">          
                 <input type="text" className="login__input" placeholder="Enter Mobile Number" maxLength="10" required/>
@@ -32,22 +32,22 @@ const Form2 = () => {
                 <input type="text" className="login__input" placeholder="Enter Member 1 Name" required/>
              </div>
              <div className="login__field form3">
-                <input type="text" className="login__input" placeholder="Enter Student Number" maxLength="7" required/>
+                <input type="text" className="login__input" placeholder="Enter Student Number" required/>
              </div>
              <div className="login__field form3">
                 <input type="text" className="login__input" placeholder="Enter Member 2 Name" required/>
              </div>
              <div className="login__field form3">
-                <input type="text" className="login__input" placeholder="Enter Student Number" maxLength="7" required/>
+                <input type="text" className="login__input" placeholder="Enter Student Number" required/>
              </div>
              <div className="login__field form3">
                 <input type="text" className="login__input" placeholder="Enter Member 3 Name" required/>
              </div>
              <div className="login__field form3">
-                <input type="text" className="login__input" placeholder="Enter Student Number" maxLength="7" required/>
+                <input type="text" className="login__input" placeholder="Enter Student Number" required/>
              </div>
             </div>
-            <button className="login__submit">
+            <button className="login__submit" type="button">
                 <span className="button__text button3">Submit</span>       
             </button>
           </form>      

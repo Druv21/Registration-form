@@ -3,6 +3,8 @@ import { useHistory } from 'react-router-dom';
 import '../css/reg_form.css';
 import {useState} from 'react';
 import blacklogo from '../assets/black.png';
+import axios from 'axios';
+
 
 function Form() {
 
@@ -13,9 +15,24 @@ function Form() {
        const history=useHistory();
        const [show, setShow] = useState(false);
        const [email,setemail]=useState("");
+
+       const postapi=async()=>{
+        axios.post("https://event0form.herokuapp.com/sendOTP",JSON.stringify(email))
+        .then(function (response) {
+          console.log(response);
+          setShow(true);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+        //const resdata=await fetchApi();
+        //console.log(resdata);
+      }
+
        const showdiv = (e)=>{
             e.preventDefault();
-            setShow(true);
+            postapi();
+            //setShow(true);
        };
 
        const getdata=(event)=>{
@@ -23,8 +40,15 @@ function Form() {
        }
 
        const url=()=>{
-           history.push("/form2");
+        axios.post("https://event0form.herokuapp.com/verifyOTP/:id/",otp)
+        .then(function (response) {
+          console.log(response);
+          history.push("/form2");
            history.go();
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
        }
 
        const store_otp=(event)=>{
@@ -64,9 +88,9 @@ function Form() {
             </h1>
                 <form className="login">
                     <div className="login__field">
-                        <input pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" type="email" className="login__input" placeholder="Enter Email" onChange={getdata}/>
+                        <input pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" type="text" className="login__input" placeholder="Enter Email" onChange={getdata}/>
                     </div>
-                    <button className="login__submit button1" onClick={showdiv}>
+                    <button className="login__submit button1" type="button" onClick={showdiv}>
                          Generate OTP
                     </button>
                  </form>
@@ -96,7 +120,7 @@ function Form() {
                   {/* <button className="login__submit button2" onClick={url}>
                     <span className="button__text">Verify OTP</span>
                   </button> */}
-                 <button className="login__submit button2 button4">
+                 <button className="login__submit button2 button4" type=''>
                     <span className="button__text">Resend OTP</span>
                  </button>
                 </div>
