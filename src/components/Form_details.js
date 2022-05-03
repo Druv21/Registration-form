@@ -1,19 +1,52 @@
 import React from "react";
 import "../css/reg_form.css";
 import blacklogo from "../assets/black.png";
-import { useState, useEffect } from "react";
+import axios from "axios";
 
 const Form2 = () => {
   const email = localStorage.getItem("email");
-  const [details, storeDetails] = useState([]);
-  var detail = "";
-  const store_details = (event) => {
-    storeDetails(event.target.value);
+
+  var obj = {
+    email: email,
+    teamleader: "",
+    teamname: "",
+    studentno: "",
+    phone: "",
+    member1: "",
+    member1_studentno: "",
+    member2: "",
+    member2_studentno: "",
   };
-  const print = (e) => {
-    e.preventDefault();
-    console.log(detail);
+
+  const senddata = async () => {
+    axios
+      .post("https://eventformconatus.herokuapp.com/users", obj)
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
+
+  function updateJSON() {
+    var inputs = document.getElementsByTagName("input");
+    for (var i = 0; i < inputs.length; i++) {
+      var q = inputs[i].name.split("%$#^");
+      setValue(obj, q, inputs[i].value);
+    }
+    console.log(obj);
+    senddata();
+  }
+
+  function setValue(obj, q, val) {
+    var sel = q.shift();
+    if (typeof obj[sel] === "object" && q.length > 0) {
+      setValue(obj[sel], q, val);
+    } else {
+      obj[sel] = val;
+    }
+  }
 
   return (
     <div className="container">
@@ -26,114 +59,103 @@ const Form2 = () => {
             <div className="scroll">
               <div className="login__field">
                 <input
-                  type="text"
-                  name="field-1"
+                  type="email"
+                  id="fields"
                   className="login__input"
+                  name="email"
+                  value={email}
+                  placeholder="Enter Email"
+                  readOnly
+                  required
+                />
+              </div>
+              <div className="login__field">
+                <input
+                  type="text"
+                  id="fields"
+                  className="login__input"
+                  name="teamleader"
                   placeholder="Enter Team Leader Name"
                   required
-                  onChange={store_details}
-                />
-              </div>
-              <div className="login__field">
-                <input
-                  type="email"
-                  className="login__input"
-                  value={email}
-                  required
-                  onChange={store_details}
                 />
               </div>
               <div className="login__field">
                 <input
                   type="text"
+                  id="fields"
                   className="login__input"
+                  name="teamname"
+                  placeholder="Enter Team Name"
+                  required
+                />
+              </div>
+              <div className="login__field">
+                <input
+                  type="number"
+                  id="fields"
+                  className="login__input"
+                  name="studentno"
                   placeholder="Enter Student Number"
-                  maxLength="7"
                   required
-                  onChange={store_details}
                 />
               </div>
               <div className="login__field">
                 <input
-                  type="text"
+                  type="number"
+                  id="fields"
                   className="login__input"
-                  placeholder="Enter Mobile Number"
+                  name="phone"
+                  placeholder="Enter Phone Number"
                   maxLength="10"
                   required
-                  onChange={store_details}
-                />
-              </div>
-              <div className="login__field">
-                <input
-                  type="text"
-                  className="login__input"
-                  placeholder="Enter Section"
-                  required
-                  onChange={store_details}
                 />
               </div>
               <div className="login__field form3">
                 <input
                   type="text"
+                  id="fields"
                   className="login__input"
+                  name="member1"
                   placeholder="Enter Member 1 Name"
                   required
-                  onChange={store_details}
                 />
               </div>
               <div className="login__field form3">
                 <input
-                  type="text"
+                  type="number"
+                  id="fields"
                   className="login__input"
+                  name="member1_studentno"
                   placeholder="Enter Student Number"
-                  maxLength="7"
                   required
-                  onChange={store_details}
                 />
               </div>
               <div className="login__field form3">
                 <input
                   type="text"
+                  id="fields"
                   className="login__input"
+                  name="member2"
                   placeholder="Enter Member 2 Name"
                   required
-                  onChange={store_details}
                 />
               </div>
               <div className="login__field form3">
                 <input
-                  type="text"
-                  name="field-4"
+                  type="number"
+                  id="fields"
                   className="login__input"
+                  name="member2_studentno"
                   placeholder="Enter Student Number"
-                  maxLength="7"
                   required
-                  onChange={store_details}
-                />
-              </div>
-              <div className="login__field form3">
-                <input
-                  type="text"
-                  name="field-3"
-                  className="login__input"
-                  placeholder="Enter Member 3 Name"
-                  required
-                  onChange={store_details}
-                />
-              </div>
-              <div className="login__field form3">
-                <input
-                  type="text"
-                  name="field-4"
-                  className="login__input"
-                  placeholder="Enter Student Number"
-                  maxLength="7"
-                  required
-                  onChange={store_details}
                 />
               </div>
             </div>
-            <button className="login__submit" onClick={print}>
+            <button
+              className="login__submit"
+              type="button"
+              onClick={updateJSON}
+            >
               <span className="button__text button3">Submit</span>
             </button>
           </form>

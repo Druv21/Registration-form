@@ -4,6 +4,7 @@ import "../css/reg_form.css";
 import { useState } from "react";
 import blacklogo from "../assets/black.png";
 import axios from "axios";
+import validator from "validator";
 
 function Form() {
   var otp = "";
@@ -15,20 +16,28 @@ function Form() {
   const [email, setemail] = useState("");
 
   const postapi = async () => {
-    axios
-      .post("https://eventformconatus.herokuapp.com/sendotp", { email: email })
-      .then(function (response) {
-        console.log(response);
-        setShow(true);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    if (validator.isEmail(email)) {
+      console.log("Valid Email :)");
+      axios
+        .post("https://eventformconatus.herokuapp.com/sendotp", {
+          email: email,
+        })
+        .then(function (response) {
+          console.log(response);
+          setShow(true);
+        })
+        .catch(function (error) {
+          if (error.response.data === "Email already registered") setShow(true);
+          else alert("error");
+        });
+    } else {
+      alert("Wrong email");
+      window.location.reload(false);
+    }
   };
 
   const showdiv = (e) => {
     e.preventDefault();
-    setShow(true);
     postapi();
   };
 
@@ -45,9 +54,7 @@ function Form() {
         console.log(response);
         url();
       })
-      .catch(function (error) {
-        console.log(error);
-      });
+      .catch(function (error) {});
   };
 
   const store_otp = (event) => {
@@ -72,7 +79,7 @@ function Form() {
       }
     }
   };
-  const abc = () => {
+  const makeempty = () => {
     otp = "";
     var i = 0;
     while (i !== 4) {
@@ -97,11 +104,10 @@ function Form() {
       .catch(function (error) {
         console.log(error);
         alert("Wrong OTP");
-        abc();
+        makeempty();
       });
   };
-  useEffect(() => {
-  }, [email]);
+  useEffect(() => {}, [email]);
   localStorage.setItem("email", email);
   return (
     <>
