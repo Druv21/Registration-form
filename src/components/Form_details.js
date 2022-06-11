@@ -7,20 +7,18 @@ const Form2 = () => {
   const email = localStorage.getItem("email");
 
   var obj = {
+    name: "",
     email: email,
-    teamleader: "",
-    teamname: "",
     studentno: "",
     phone: "",
-    member1: "",
-    member1_studentno: "",
-    member2: "",
-    member2_studentno: "",
+    branch: "",
+    section: "",
+    residence: "",
   };
 
   const senddata = async () => {
     axios
-      .post("https://eventformconatus.herokuapp.com/users", obj)
+      .post("https://event0form.herokuapp.com/users", obj)
       .then(function (response) {
         console.log(response);
       })
@@ -74,28 +72,18 @@ const Form2 = () => {
                   type="text"
                   id="fields"
                   className="login__input"
-                  name="teamleader"
-                  placeholder="Enter Team Leader Name"
+                  name="name"
+                  placeholder="Enter Name"
                   required
                 />
               </div>
               <div className="login__field">
                 <input
-                  type="text"
-                  id="fields"
-                  className="login__input"
-                  name="teamname"
-                  placeholder="Enter Team Name"
-                  required
-                />
-              </div>
-              <div className="login__field">
-                <input
-                  type="number"
+                  type="numer"
                   id="fields"
                   className="login__input"
                   name="studentno"
-                  placeholder="Enter Student Number"
+                  placeholder="Enter Student NUmber"
                   required
                 />
               </div>
@@ -110,45 +98,52 @@ const Form2 = () => {
                   required
                 />
               </div>
-              <div className="login__field form3">
-                <input
-                  type="text"
-                  id="fields"
-                  className="login__input"
-                  name="member1"
-                  placeholder="Enter Member 1 Name"
-                  required
-                />
+              <div className="login__field">
+                <label id="menu">
+                  Branch:
+                  <input
+                    className="login_input"
+                    list="branches"
+                    name="branch"
+                  />
+                </label>
+                <datalist id="branches">
+                  <option value="CSE" />
+                  <option value="CSE-AIML" />
+                  <option value="CSE-DS" />
+                  <option value="CS" />
+                  <option value="IT" />
+                  <option value="CS-IT" />
+                </datalist>
               </div>
               <div className="login__field form3">
-                <input
-                  type="number"
-                  id="fields"
-                  className="login__input"
-                  name="member1_studentno"
-                  placeholder="Enter Student Number"
-                  required
-                />
+                <label id="menu">
+                  Section:
+                  <input
+                    className="login_input"
+                    list="sections"
+                    name="section"
+                  />
+                </label>
+                <datalist id="sections">
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </datalist>
               </div>
               <div className="login__field form3">
-                <input
-                  type="text"
-                  id="fields"
-                  className="login__input"
-                  name="member2"
-                  placeholder="Enter Member 2 Name"
-                  required
-                />
-              </div>
-              <div className="login__field form3">
-                <input
-                  type="number"
-                  id="fields"
-                  className="login__input"
-                  name="member2_studentno"
-                  placeholder="Enter Student Number"
-                  required
-                />
+                <label id="menu">
+                  Residence:
+                  <input
+                    className="login_input"
+                    list="residences"
+                    name="residence"
+                  />
+                </label>
+                <datalist id="residences">
+                  <option value="Hosteller" />
+                  <option value="Day Scholar" />
+                </datalist>
               </div>
             </div>
             <button

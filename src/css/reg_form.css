@@ -234,3 +234,8 @@ body {
   margin-left: auto;
   color: #7875b5;
 }
+
+#menu {
+  font-size: small;
+  font-family: Helvetica;
+}
