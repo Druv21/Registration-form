@@ -10,7 +10,8 @@ function Form() {
   var otp = "";
   var nextfield = "";
   var count = 0;
-
+  var store = "";
+  const [url1, seturl] = useState("");
   const history = useHistory();
   const [show, setShow] = useState(false);
   const [email, setemail] = useState("");
@@ -19,11 +20,15 @@ function Form() {
     if (validator.isEmail(email)) {
       console.log("Valid Email :)");
       axios
-        .post("https://eventformconatus.herokuapp.com/sendotp", {
+        .post("https://event0form.herokuapp.com/sendOTP", {
           email: email,
         })
         .then(function (response) {
           console.log(response);
+          store = response.data.user._id;
+
+          console.log(store);
+          seturl("https://event0form.herokuapp.com/verifyOTP/" + store);
           setShow(true);
         })
         .catch(function (error) {
@@ -92,14 +97,18 @@ function Form() {
   };
   const url = () => {
     axios
-      .post("https://eventformconatus.herokuapp.com/verifyOTP", {
-        email: email,
+      .post(url1, {
         otp: otp,
       })
       .then(function (response) {
-        console.log(response);
-        history.push("/form2");
-        history.go();
+        if (response.data === "Otp Verified") {
+          history.push("/form2");
+          history.go();
+        } else {
+          console.log("naah");
+          alert("Wrong OTP");
+          makeempty();
+        }
       })
       .catch(function (error) {
         console.log(error);
