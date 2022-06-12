@@ -11,6 +11,7 @@ function Form() {
   var nextfield = "";
   var count = 0;
   var store = "";
+  
   const [url1, seturl] = useState("");
   const history = useHistory();
   const [show, setShow] = useState(false);
@@ -21,13 +22,12 @@ function Form() {
       console.log("Valid Email :)");
       axios
         .post("https://event0form.herokuapp.com/sendOTP", {
-          email: email,
+          email: email
         })
         .then(function (response) {
           console.log(response);
           store = response.data.user._id;
-
-          console.log(store);
+          //console.log(store);
           seturl("https://event0form.herokuapp.com/verifyOTP/" + store);
           setShow(true);
         })
@@ -50,17 +50,17 @@ function Form() {
     setemail(event.target.value);
   };
 
-  const resendotp = async () => {
-    axios
-      .post("https://eventformconatus.herokuapp.com/resendOTP", {
-        email: email,
-      })
-      .then(function (response) {
-        console.log(response);
-        url();
-      })
-      .catch(function (error) {});
-  };
+  // const resendotp = async () => {
+  //   axios
+  //     .post("https://eventformconatus.herokuapp.com/resendOTP", {
+  //       email: email,
+  //     })
+  //     .then(function (response) {
+  //       console.log(response);
+  //       url();
+  //     })
+  //     .catch(function (error) {});
+  // };
 
   const store_otp = (event) => {
     otp = otp.concat(event.target.value);
@@ -98,14 +98,14 @@ function Form() {
   const url = () => {
     axios
       .post(url1, {
-        otp: otp,
+        otp: otp
       })
       .then(function (response) {
         if (response.data === "Otp Verified") {
           history.push("/form2");
           history.go();
         } else {
-          console.log("naah");
+          //console.log("naah");
           alert("Wrong OTP");
           makeempty();
         }
@@ -194,12 +194,12 @@ function Form() {
               />
             </div>
 
-            <button
+            {/* <button
               className="login__submit button2 button4"
               onClick={resendotp}
             >
               <span className="button__text">Resend OTP</span>
-            </button>
+            </button> */}
           </div>
           <div className="screen__background">
             <span className="screen__background__shape screen__background__shape4"></span>
