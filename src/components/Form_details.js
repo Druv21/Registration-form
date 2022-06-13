@@ -16,10 +16,12 @@ const Form2 = () => {
     residence: ""
   };
 
+  const json= JSON.stringify({obj});
+
   const senddata = async () => {
    // const userdata=JSON.stringify(obj);
     axios
-      .post("https://event0form.herokuapp.com/users", {obj})
+      .post("https://event0form.herokuapp.com/users", obj)
       .then(function (response) {
         console.log(response);
       })
@@ -117,7 +119,7 @@ const Form2 = () => {
                   <option value="CSE-DS" />
                   <option value="CS" />
                   <option value="IT" />
-                  <option value="CS-IT" />
+                  <option value="CSIT" />
                 </datalist>
               </div>
 
@@ -150,7 +152,7 @@ const Form2 = () => {
                 />
                 <datalist id="residences">
                   <option value="Hosteller" />
-                  <option value="Day Scholar" />
+                  <option value="Day-Scholer" />
                 </datalist>
               </div>
             </div>
