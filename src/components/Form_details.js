@@ -33,7 +33,6 @@ const Form2 = () => {
       var q = inputs[i].name.split("%$#^");
       setValue(obj, q, inputs[i].value);
     }
-    console.log(obj);
     senddata();
   }
 

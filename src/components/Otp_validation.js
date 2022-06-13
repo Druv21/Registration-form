@@ -24,10 +24,8 @@ function Form() {
           email: email,
         })
         .then(function (response) {
-          console.log(response);
+          alert("OTP sent successfully");
           store = response.data.user._id;
-
-          console.log(store);
           seturl("https://event0form.herokuapp.com/verifyOTP/" + store);
           setShow(true);
         })
@@ -52,14 +50,15 @@ function Form() {
 
   const resendotp = async () => {
     axios
-      .post("https://eventformconatus.herokuapp.com/resendOTP", {
+      .post("https://event0form.herokuapp.com/sendOTP", {
         email: email,
       })
       .then(function (response) {
-        console.log(response);
-        url();
+        alert("OTP Sent Successfully");
       })
-      .catch(function (error) {});
+      .catch(function (error) {
+        alert("OTP not sent");
+      });
   };
 
   const store_otp = (event) => {
@@ -105,13 +104,11 @@ function Form() {
           history.push("/form2");
           history.go();
         } else {
-          console.log("naah");
           alert("Wrong OTP");
           makeempty();
         }
       })
       .catch(function (error) {
-        console.log(error);
         alert("Wrong OTP");
         makeempty();
       });
