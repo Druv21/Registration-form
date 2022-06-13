@@ -6,19 +6,20 @@ import axios from "axios";
 const Form2 = () => {
   const email = localStorage.getItem("email");
 
-  var obj = {
+  const obj = {
     name: "",
     email: email,
     studentno: "",
     phone: "",
     branch: "",
     section: "",
-    residence: "",
+    residence: ""
   };
 
   const senddata = async () => {
+   // const userdata=JSON.stringify(obj);
     axios
-      .post("https://event0form.herokuapp.com/users", obj)
+      .post("https://event0form.herokuapp.com/users", {obj})
       .then(function (response) {
         console.log(response);
       })
@@ -73,16 +74,17 @@ const Form2 = () => {
                   className="login__input"
                   name="name"
                   placeholder="Enter Name"
+                  autoComplete="off"
                   required
                 />
               </div>
               <div className="login__field">
                 <input
-                  type="numer"
+                  type="number"
                   id="fields"
                   className="login__input"
                   name="studentno"
-                  placeholder="Enter Student NUmber"
+                  placeholder="Enter Student Number"
                   required
                 />
               </div>
@@ -94,18 +96,21 @@ const Form2 = () => {
                   name="phone"
                   placeholder="Enter Phone Number"
                   maxLength="10"
+                  autoComplete="off"
                   required
                 />
               </div>
+
               <div className="login__field">
-                <label id="menu">
-                  Branch:
-                  <input
-                    className="login_input"
-                    list="branches"
-                    name="branch"
-                  />
-                </label>
+                <input
+                  type="text"
+                  id="fields"
+                  className="login__input"
+                  name="branch"
+                  placeholder="Select Branch"
+                  list="branches"
+                  required
+                />
                 <datalist id="branches">
                   <option value="CSE" />
                   <option value="CSE-AIML" />
@@ -115,30 +120,34 @@ const Form2 = () => {
                   <option value="CS-IT" />
                 </datalist>
               </div>
-              <div className="login__field form3">
-                <label id="menu">
-                  Section:
-                  <input
-                    className="login_input"
-                    list="sections"
-                    name="section"
-                  />
-                </label>
+
+              <div className="login__field">
+                <input
+                  type="text"
+                  id="fields"
+                  className="login__input"
+                  name="section"
+                  placeholder="Select Section"
+                  list="sections"
+                  required
+                />
                 <datalist id="sections">
                   <option value="1" />
                   <option value="2" />
                   <option value="3" />
                 </datalist>
               </div>
-              <div className="login__field form3">
-                <label id="menu">
-                  Residence:
-                  <input
-                    className="login_input"
-                    list="residences"
-                    name="residence"
-                  />
-                </label>
+
+              <div className="login__field">
+                <input
+                  type="text"
+                  id="fields"
+                  className="login__input"
+                  name="residence"
+                  placeholder="Select Residence"
+                  list="residences"
+                  required
+                />
                 <datalist id="residences">
                   <option value="Hosteller" />
                   <option value="Day Scholar" />

@@ -11,6 +11,7 @@ function Form() {
   var nextfield = "";
   var count = 0;
   var store = "";
+
   const [url1, seturl] = useState("");
   const history = useHistory();
   const [show, setShow] = useState(false);
@@ -18,7 +19,7 @@ function Form() {
 
   const postapi = async () => {
     if (validator.isEmail(email)) {
-      console.log("Valid Email :)");
+     
       axios
         .post("https://event0form.herokuapp.com/sendOTP", {
           email: email,
@@ -26,6 +27,7 @@ function Form() {
         .then(function (response) {
           alert("OTP sent successfully");
           store = response.data.user._id;
+
           seturl("https://event0form.herokuapp.com/verifyOTP/" + store);
           setShow(true);
         })
@@ -54,10 +56,10 @@ function Form() {
         email: email,
       })
       .then(function (response) {
-        alert("OTP Sent Successfully");
+        alert("OTP sent successfully");
       })
       .catch(function (error) {
-        alert("OTP not sent");
+        alert("OTP not sent")
       });
   };
 
