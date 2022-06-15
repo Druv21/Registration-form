@@ -19,17 +19,21 @@ function Form() {
 
   const postapi = async () => {
     if (validator.isEmail(email)) {
-     
       axios
         .post("https://event0form.herokuapp.com/sendOTP", {
           email: email,
         })
         .then(function (response) {
-          alert("OTP sent successfully");
-          store = response.data.user._id;
-
-          seturl("https://event0form.herokuapp.com/verifyOTP/" + store);
-          setShow(true);
+          if (response.data === "Already Registered") {
+            alert("Already Registered");
+            window.location.reload(false);
+          } else {
+            alert("OTP sent successfully");
+            store = response.data.user._id;
+            seturl("https://event0form.herokuapp.com/verifyOTP/" + store);
+            console.log(response);
+            setShow(true);
+          }
         })
         .catch(function (error) {
           if (error.response.data === "Email already registered") setShow(true);
@@ -40,7 +44,6 @@ function Form() {
       window.location.reload(false);
     }
   };
-
   const showdiv = (e) => {
     e.preventDefault();
     postapi();
@@ -59,7 +62,7 @@ function Form() {
         alert("OTP sent successfully");
       })
       .catch(function (error) {
-        alert("OTP not sent")
+        alert("OTP not sent");
       });
   };
 
@@ -85,6 +88,7 @@ function Form() {
       }
     }
   };
+
   const makeempty = () => {
     otp = "";
     var i = 0;
@@ -96,6 +100,7 @@ function Form() {
     var foc = document.querySelector(`input[name=field-${1}]`);
     foc.focus();
   };
+
   const url = () => {
     axios
       .post(url1, {
@@ -115,6 +120,7 @@ function Form() {
         makeempty();
       });
   };
+
   useEffect(() => {}, [email]);
   localStorage.setItem("email", email);
   return (

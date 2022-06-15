@@ -1,5 +1,6 @@
 import React from "react";
 import "../css/reg_form.css";
+import { useHistory } from "react-router-dom";
 import blacklogo from "../assets/black.png";
 import axios from "axios";
 
@@ -13,17 +14,18 @@ const Form2 = () => {
     phone: "",
     branch: "",
     section: "",
-    residence: ""
+    residence: "",
   };
 
-  const json= JSON.stringify({obj});
+  const history = useHistory();
 
   const senddata = async () => {
-   // const userdata=JSON.stringify(obj);
     axios
       .post("https://event0form.herokuapp.com/users", obj)
       .then(function (response) {
         console.log(response);
+        history.push("/");
+        history.go();
       })
       .catch(function (error) {
         console.log(error);
@@ -60,7 +62,7 @@ const Form2 = () => {
               <div className="login__field">
                 <input
                   type="email"
-                  id="fields"
+                  id="field"
                   className="login__input"
                   name="email"
                   value={email}

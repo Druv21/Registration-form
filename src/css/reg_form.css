@@ -156,7 +156,7 @@ body {
 .login__icon {
   position: absolute;
   top: 0px;
-  color: #7875b5;
+  /* color: #7875b5; */
 }
 
 .login__input {
@@ -168,9 +168,9 @@ body {
   width: 85%;
 }
 
-.login__input:active,
-.login__input:focus,
-.login__input:hover {
+#fields:active,
+#fields:focus,
+#fields:hover {
   outline: none;
   border-bottom-color: #6a679e;
 }
@@ -238,4 +238,10 @@ body {
 #menu {
   font-size: small;
   font-family: Helvetica;
+}
+
+#field{
+  color:black;
+  opacity: 0.4;
+  font-weight: 700;
 }
