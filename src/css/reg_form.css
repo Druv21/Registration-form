@@ -163,7 +163,7 @@ body {
   border: none;
   border-bottom: 2px solid #d1d1d4;
   background: none;
-  padding: 9px;
+  padding: 9px 9px 9px 0px;
   font-weight: 700;
   width: 85%;
 }
@@ -242,6 +242,12 @@ body {
 
 #field{
   color:black;
-  opacity: 0.4;
+  opacity: 0.5;
   font-weight: 700;
+}
+
+.errors{
+  color: red;
+  font-size: 13px;
+  /* padding-left: 9px; */
 }

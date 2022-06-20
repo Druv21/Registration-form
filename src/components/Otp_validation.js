@@ -132,6 +132,7 @@ function Form() {
               <img src={blacklogo} alt="Logo" height="100" width="120" />
             </div>
             <h1 className="heading">Registration</h1>
+
             <form className="login">
               <div className="login__field">
                 <input
@@ -164,7 +165,7 @@ function Form() {
               <input
                 name="field-1"
                 length="1"
-                type="text"
+                type="number"
                 className="OTP"
                 maxLength="1"
                 required
@@ -173,7 +174,7 @@ function Form() {
               <input
                 name="field-2"
                 length="1"
-                type="text"
+                type="number"
                 className="OTP"
                 maxLength="1"
                 required
@@ -182,7 +183,7 @@ function Form() {
               <input
                 name="field-3"
                 length="1"
-                type="text"
+                type="number"
                 className="OTP"
                 maxLength="1"
                 required
@@ -191,7 +192,7 @@ function Form() {
               <input
                 name="field-4"
                 length="1"
-                type="text"
+                type="number"
                 className="OTP"
                 maxLength="1"
                 required
